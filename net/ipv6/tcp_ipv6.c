@@ -2125,6 +2125,8 @@ struct proto tcpv6_prot = {
 #endif
 };
 
+	.diag_destroy		= tcp_abort,
+
 static const struct inet6_protocol tcpv6_protocol = {
 	.handler	=	tcp_v6_rcv,
 	.err_handler	=	tcp_v6_err,
