@@ -174,10 +174,6 @@ struct fscrypt_name {
  */
 struct fscrypt_operations {
 	int (*get_context)(struct inode *, void *, size_t);
-<<<<<<< HEAD
-	int (*key_prefix)(struct inode *, u8 **);
-=======
->>>>>>> 7f0dd21... fs crypto: move per-file encryption from f2fs tree to fs/crypto
 	int (*prepare_context)(struct inode *);
 	int (*set_context)(struct inode *, const void *, size_t, void *);
 	int (*dummy_context)(struct inode *);
@@ -266,15 +262,9 @@ static inline void fscrypt_set_d_op(struct dentry *dentry)
 extern struct kmem_cache *fscrypt_info_cachep;
 int fscrypt_initialize(void);
 
-<<<<<<< HEAD
 extern struct fscrypt_ctx *fscrypt_get_ctx(struct inode *, gfp_t);
 extern void fscrypt_release_ctx(struct fscrypt_ctx *);
 extern struct page *fscrypt_encrypt_page(struct inode *, struct page *, gfp_t);
-=======
-extern struct fscrypt_ctx *fscrypt_get_ctx(struct inode *);
-extern void fscrypt_release_ctx(struct fscrypt_ctx *);
-extern struct page *fscrypt_encrypt_page(struct inode *, struct page *);
->>>>>>> 7f0dd21... fs crypto: move per-file encryption from f2fs tree to fs/crypto
 extern int fscrypt_decrypt_page(struct page *);
 extern void fscrypt_decrypt_bio_pages(struct fscrypt_ctx *, struct bio *);
 extern void fscrypt_pullback_bio_page(struct page **, bool);
@@ -308,12 +298,8 @@ extern int fscrypt_fname_usr_to_disk(struct inode *, const struct qstr *,
 #endif
 
 /* crypto.c */
-<<<<<<< HEAD
 static inline struct fscrypt_ctx *fscrypt_notsupp_get_ctx(struct inode *i,
 							gfp_t f)
-=======
-static inline struct fscrypt_ctx *fscrypt_notsupp_get_ctx(struct inode *i)
->>>>>>> 7f0dd21... fs crypto: move per-file encryption from f2fs tree to fs/crypto
 {
 	return ERR_PTR(-EOPNOTSUPP);
 }
@@ -324,11 +310,7 @@ static inline void fscrypt_notsupp_release_ctx(struct fscrypt_ctx *c)
 }
 
 static inline struct page *fscrypt_notsupp_encrypt_page(struct inode *i,
-<<<<<<< HEAD
 						struct page *p, gfp_t f)
-=======
-						struct page *p)
->>>>>>> 7f0dd21... fs crypto: move per-file encryption from f2fs tree to fs/crypto
 {
 	return ERR_PTR(-EOPNOTSUPP);
 }
