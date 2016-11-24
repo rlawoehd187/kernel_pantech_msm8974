@@ -60,6 +60,8 @@ else ifeq ($(CONFIG_BOARD_VER),$(CONFIG_TP10))
 	dtb-$(CONFIG_MACH_MSM8974_EF60S)      += msm8974-v2.2-ef60s-tp10.dtb
 else ifeq ($(CONFIG_BOARD_VER),$(CONFIG_TP20))	
 	dtb-$(CONFIG_MACH_MSM8974_EF60S)      += msm8974-v2.2-ef60s-tp20.dtb
+	dtb-$(CONFIG_MACH_MSM8974_EF60S)      += msm8974-v2.2-ef61k-tp20.dtb
+	dtb-$(CONFIG_MACH_MSM8974_EF60S)      += msm8974-v2.2-ef62l-tp20.dtb
 else
 	dtb-$(CONFIG_MACH_MSM8974_EF60S)      += msm8974-v2.2-ef60s-pp10.dtb
 endif
@@ -210,6 +212,8 @@ else ifeq ($(CONFIG_BOARD_VER),$(CONFIG_TP10))
 	dtb-$(CONFIG_MACH_MSM8974_EF59S)      += msm8974-v2.2-ef59s-tp10.dtb
 else ifeq ($(CONFIG_BOARD_VER),$(CONFIG_TP20))
 	dtb-$(CONFIG_MACH_MSM8974_EF59S)      += msm8974-v2.2-ef59s-tp20.dtb
+	dtb-$(CONFIG_MACH_MSM8974_EF59S)      += msm8974-v2.2-ef59l-tp20.dtb
+	dtb-$(CONFIG_MACH_MSM8974_EF59S)      += msm8974-v2.2-ef59k-tp20.dtb
 else ifeq ($(CONFIG_BOARD_VER),$(CONFIG_PP10))
 	dtb-$(CONFIG_MACH_MSM8974_EF59S)      += msm8974-v2.2-ef59s-pp10.dtb
 endif
