@@ -378,8 +378,10 @@ static int ceph_show_options(struct seq_file *m, struct dentry *root)
 	if (opt->flags & CEPH_OPT_NOCRC)
 		seq_puts(m, ",nocrc");
 
-	if (opt->name)
-		seq_printf(m, ",name=%s", opt->name);
+	if (opt->name) {
+		seq_puts(m, ",name=");
+		seq_escape(m, opt->name, ", \t\n\\");
+	}
 	if (opt->key)
 		seq_puts(m, ",secret=<hidden>");
 
