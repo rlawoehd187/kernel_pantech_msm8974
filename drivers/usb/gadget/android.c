@@ -2840,12 +2840,38 @@ functions_store(struct device *pdev, struct device_attribute *attr,
 
 			while (conf_str) {
 				name = strsep(&conf_str, ",");
-				if (name) {
-					err = android_enable_function(dev, conf, name);
-					if (err)
-						pr_err("android_usb: Cannot enable %s",
-							name);
+			if (!name)
+				continue;
+
+			is_ffs = 0;
+			strlcpy(aliases, dev->ffs_aliases, sizeof(aliases));
+			a = aliases;
+
+
+			while (a) {
+				char *alias = strsep(&a, ",");
+				if (alias && !strcmp(name, alias)) {
+					is_ffs = 1;
+					break;
 				}
+			}
+
+			if (is_ffs) {
+				if (ffs_enabled)
+					continue;
+				err = android_enable_function(dev, conf, "ffs");
+					if (err)
+					pr_err("android_usb: Cannot enable ffs (%d)",
+						err);
+				else
+					ffs_enabled = 1;
+				continue;
+				}
+
+			err = android_enable_function(dev, conf, name);
+			if (err)
+				pr_err("android_usb: Cannot enable '%s' (%d)",
+								   name, err);
 			}
 		}
 

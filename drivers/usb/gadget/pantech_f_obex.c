@@ -983,7 +983,7 @@ static int pantech_obex_bind_config(struct usb_configuration *c)
 	}
 
 	dev->function.name = "obex";
-	dev->function.descriptors = pantech_fs_obex_descs;
+	dev->function.fs_descriptors = pantech_fs_obex_descs;
 	dev->function.hs_descriptors = pantech_hs_obex_descs;
 	//LS2_USB tarial added descriptor for SSUSB support
 	if(gadget_is_superspeed(c->cdev->gadget))
