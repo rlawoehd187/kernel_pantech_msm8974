@@ -10,14 +10,14 @@
 ##############################################################################
 
 export ARCH=arm
-export PATH=/home/chautruongthinh/cm13/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/bin:$PATH
+export PATH=/home/chautruongthinh/lineage-15.1/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/bin:$PATH
 export CROSS_COMPILE=arm-linux-androideabi-
 
 ##############################################################################
 # make zImage
 ##############################################################################
 mkdir -p ./obj/KERNEL_OBJ/
-make ARCH=arm O=./obj/KERNEL_OBJ/ cyanogenmod_ef63_defconfig
+make ARCH=arm O=./obj/KERNEL_OBJ/ LineageOS_ef63_defconfig
 make -j8 ARCH=arm O=./obj/KERNEL_OBJ/ 2>&1 | tee kernel_log.txt
 
 ##############################################################################
