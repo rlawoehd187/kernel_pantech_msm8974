@@ -71,6 +71,7 @@
 
 #define SYS_RESET_REASON_NORMAL_MASK               0xDA0000F0
 #define SYS_RESET_REASON_NORMAL                    0xDA0000F1
+#define SYS_RESET_REASON_SKT_CHARGING 		   0xDA0000F2
 
 #define SET_SYS_RESET_MAGIC(x)                            (*((volatile unsigned int *)PANTECH_RESET_MAGIC_ADDR) = (x))
 #define SET_SYS_RESET_REASON_CLEAR(x)              (*((volatile unsigned int *)PANTECH_RESET_REASON_ADDR) = (x))
@@ -100,6 +101,8 @@ do { \
                                                                           ((*(volatile unsigned int *)PANTECH_RESET_REASON_ADDR) & ~(0xFFF0FFFF)) == (SYS_RESET_RAMDUMP_MASK)
 #define IS_SYS_RESET_AND_REBOOT                  IS_SYS_MAGIC && \
                                                                           ((*(volatile unsigned int *)PANTECH_RESET_REASON_ADDR) & ~(0x00FFFFFF)) == (SYS_RESET_REASON_MASK)
+#define IS_SYS_SKT_CHARGING_MODE                IS_SYS_MAGIC && \
+                                                                          ((*(volatile unsigned int *)PANTECH_RESET_REASON_ADDR) & ~(0x00FFFF00)) == (SYS_RESET_REASON_SKT_CHARGING)
 #define IS_SYS_RESET                                        IS_SYS_MAGIC && \
                                                                           (((*(volatile unsigned int *)PANTECH_RESET_REASON_ADDR) & ~(0x00FFFFFF)) == (SYS_RESET_REASON_MASK)) && \
                                                                           (((*(volatile unsigned int *)PANTECH_RESET_REASON_ADDR) & ~(0x00FFFF0F)) != (SYS_RESET_REASON_NORMAL_MASK))
