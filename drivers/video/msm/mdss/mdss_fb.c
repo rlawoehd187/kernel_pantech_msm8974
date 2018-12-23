@@ -1639,7 +1639,7 @@ int mdss_fb_alloc_fb_ion_memory(struct msm_fb_data_type *mfd, size_t fb_size)
 			ion_unmap_iommu(mfd->fb_ion_client, mfd->fb_ion_handle,
 					mfd->mdp.fb_mem_get_iommu_domain(), 0);
 		}
-		goto err_put;
+		goto fb_mmap_failed;
 	}
 
 	pr_debug("alloc 0x%zuB vaddr = %p (%pa iova) for fb%d\n", fb_size,
@@ -1651,12 +1651,8 @@ int mdss_fb_alloc_fb_ion_memory(struct msm_fb_data_type *mfd, size_t fb_size)
 
 	return rc;
 
-err_put:
-	dma_buf_put(mfd->fbmem_buf);
 fb_mmap_failed:
 	ion_free(mfd->fb_ion_client, mfd->fb_ion_handle);
-	mfd->fb_ion_handle = NULL;
-	mfd->fbmem_buf = NULL;
 	return rc;
 }
 
