@@ -522,7 +522,7 @@ static int unlazy_walk(struct nameidata *nd, struct dentry *dentry)
 	}
 	mntget(nd->path.mnt);
 
-	nlock_rcu_walk();
+	unlock_rcu_walk();
 	nd->flags &= ~LOOKUP_RCU;
 	return 0;
 
@@ -1138,8 +1138,7 @@ failed:
 	nd->flags &= ~LOOKUP_RCU;
 	if (!(nd->flags & LOOKUP_ROOT))
 		nd->root.mnt = NULL;
-	rcu_read_unlock();
-	br_read_unlock(&vfsmount_lock);
+	unlock_rcu_walk();
 	return -ECHILD;
 }
 
@@ -1476,8 +1475,7 @@ static void terminate_walk(struct nameidata *nd)
 		nd->flags &= ~LOOKUP_RCU;
 		if (!(nd->flags & LOOKUP_ROOT))
 			nd->root.mnt = NULL;
-		rcu_read_unlock();
-		br_read_unlock(&vfsmount_lock);
+		unlock_rcu_walk();
 	}
 }
 
