@@ -94,15 +94,15 @@ static long audio_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 		} else {
 			audio->enabled = 0;
 			pr_err("Audio Start procedure failed rc=%d\n", rc);
-			break;
-		}
+		break;
+	}
 		pr_debug("%s:AUDIO_START sessionid[%d]enable[%d]\n", __func__,
 			audio->ac->session,
 			audio->enabled);
 		if (audio->stopped == 1)
 			audio->stopped = 0;
-			break;
-		}
+		break;
+	}
 	case AUDIO_GET_AMRWBPLUS_CONFIG_V2: {
 		if ((audio) && (arg) && (audio->codec_cfg)) {
 			if (copy_to_user((void *)arg, audio->codec_cfg,

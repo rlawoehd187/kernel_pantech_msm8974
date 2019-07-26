@@ -505,9 +505,9 @@ int map_and_register_buf(struct msm_vidc_inst *inst, struct v4l2_buffer *b)
 			goto exit;
 
         if (check_same_fd_handle)
-		same_fd_handle = get_same_fd_buffer(inst,
-					&inst->registered_bufs,
-					b->m.planes[i].reserved[0]);
+	same_fd_handle = get_same_fd_buffer(inst,
+				&inst->registered_bufs,
+				b->m.planes[i].reserved[0]);
 
 		populate_buf_info(binfo, b, i);
 		if (same_fd_handle) {

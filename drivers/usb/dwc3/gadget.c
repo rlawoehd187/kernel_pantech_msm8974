@@ -332,8 +332,8 @@ void dwc3_gadget_giveback(struct dwc3_ep *dep, struct dwc3_request *req,
 #ifdef CONFIG_ANDROID_PANTECH_USB_MANAGER
   if(req->request.complete)
 #endif
-	req->request.complete(&dep->endpoint, &req->request);
-	spin_lock(&dwc->lock);
+req->request.complete(&dep->endpoint, &req->request);
+spin_lock(&dwc->lock);
 }
 
 static const char *dwc3_gadget_ep_cmd_string(u8 cmd)

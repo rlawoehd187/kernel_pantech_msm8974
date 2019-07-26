@@ -950,7 +950,7 @@ gser_bind(struct usb_configuration *c, struct usb_function *f)
 
 	status = usb_interface_id(c, f);
 	if (status < 0)
-		goto fail;
+	goto fail;
 		gser->data_id = status; //data_id : cdc interface number
 		gser_acm_cdc_interface_desc.bInterfaceNumber = status;
 

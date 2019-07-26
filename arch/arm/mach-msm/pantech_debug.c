@@ -249,7 +249,7 @@ void pantech_debug_rpm_ack_log(unsigned int msgid, int errno)
     unsigned int i;
     
     if (!pantech_dbg_log)
-        return;
+  return;
 
         i = atomic_inc_return(&(pantech_dbg_log->rpm_log_idx)) 
             & (RPM_LOG_MAX - 1);

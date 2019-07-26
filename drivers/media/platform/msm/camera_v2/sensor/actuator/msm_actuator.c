@@ -172,18 +172,18 @@ static int32_t msm_actuator_init_focus(struct msm_actuator_ctrl_t *a_ctrl,
 		switch (type) {
 		case MSM_ACTUATOR_BYTE_DATA:
 #ifdef CONFIG_PANTECH_CAMERA_RUMBA_SA
-		  if (settings[i].reg_addr == 0x02C0)
+		if (settings[i].reg_addr == 0x02C0)
                     rc = a_ctrl->i2c_client.i2c_func_tbl->i2c_write(
                         &a_ctrl->i2c_client,
                         settings[i].reg_addr,
                         settings[i].reg_data, MSM_CAMERA_I2C_WORD_DATA);
                 else
 #endif
-			rc = a_ctrl->i2c_client.i2c_func_tbl->i2c_write(
-				&a_ctrl->i2c_client,
-				settings[i].reg_addr,
-				settings[i].reg_data, MSM_CAMERA_I2C_BYTE_DATA);
-			break;
+		rc = a_ctrl->i2c_client.i2c_func_tbl->i2c_write(
+			&a_ctrl->i2c_client,
+			settings[i].reg_addr,
+			settings[i].reg_data, MSM_CAMERA_I2C_BYTE_DATA);
+		break;
 		case MSM_ACTUATOR_WORD_DATA:
 			rc = a_ctrl->i2c_client.i2c_func_tbl->i2c_write(
 				&a_ctrl->i2c_client,
