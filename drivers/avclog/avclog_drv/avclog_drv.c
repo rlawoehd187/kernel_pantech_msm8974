@@ -74,7 +74,7 @@ static void print_avclog_function(const char *fmt)
     AVC_DBG_CONFIRM(AVC_CONFIRM, printk("SUNGHWAN AVCLOG[%s]\n", fmt));
 }
 
-inline int avc_check_overwrite_prev_log(unsigned int pos, unsigned int size, unsigned int* ram_pos)
+static inline int avc_check_overwrite_prev_log(unsigned int pos, unsigned int size, unsigned int* ram_pos)
 {
 	print_avclog_function(__func__);
 	*ram_pos = header_info->ram_pos;

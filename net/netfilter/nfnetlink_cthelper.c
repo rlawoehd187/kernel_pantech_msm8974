@@ -91,7 +91,7 @@ nfnl_cthelper_from_nlattr(struct nlattr *attr, struct nf_conn *ct)
 	if (help->helper->data_len == 0)
 		return -EINVAL;
 
-	memcpy(&help->data, nla_data(attr), help->helper->data_len);
+	memcpy((void*)&help->data, nla_data(attr), help->helper->data_len);
 	return 0;
 }
 
