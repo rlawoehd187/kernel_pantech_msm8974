@@ -70,3 +70,6 @@ obj-$(CONFIG_SENSORS_CAPELLA_CM36283)	+= cm36283.o
 obj-$(CONFIG_INPUT_FPC1080)             += fpc1080.o
 obj-$(CONFIG_INPUT_FPC1080_MODULE)             += fpc1080_module.o
 obj-$(CONFIG_INPUT_GPIO)		+= gpio_switch.o 
+obj-$(CONFIG_FPR_SPI)	+= vfsSpiDrv.o
+
+EXTRA_CFLAGS += -DPLATFORM_BIG_ENDIAN=1 -DVCS_FEATURE_SENSOR_WINDSOR=0

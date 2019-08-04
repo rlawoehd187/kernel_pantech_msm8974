@@ -3134,7 +3134,6 @@ config AUTOSMP
 	help
 	  Automatically hotplugs the multiple CPU cores based on
 	  CPU load and suspend state.
-endif
 
 config KERNEL_TEXT_MPU_PROT
         bool "Enable xpu protection of kernel r/o sections"
@@ -3143,3 +3142,5 @@ config KERNEL_TEXT_MPU_PROT
           sections early in boot. Read access is permitted to
           all masters; Write access is only permited to the
           secure world.
+
+endif

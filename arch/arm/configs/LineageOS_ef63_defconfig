@@ -3897,3 +3897,11 @@ CONFIG_NLATTR=y
 # CONFIG_CORDIC is not set
 CONFIG_QMI_ENCDEC=y
 # CONFIG_QMI_ENCDEC_DEBUG is not set
+
+#
+# Vadality finger printer SPI driver
+#
+CONFIG_FPR_SPI=y
+CONFIG_FPR_SPI_DMA_GSBI1=y
+# CONFIG_FPR_SPI_DMA_GSBI5 is not set
+
